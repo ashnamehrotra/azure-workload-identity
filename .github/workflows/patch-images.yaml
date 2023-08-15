@@ -28,6 +28,7 @@ jobs:
         run: |
           report_file="report.json"
           vuln_count=$(jq '.Results | length' "$report_file")
+          echo "VULN COUNT: $vuln_count"
           if [ $vuln_count == '0' ]; then
             exit 1
           fi
