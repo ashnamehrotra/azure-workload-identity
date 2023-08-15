@@ -27,7 +27,7 @@ jobs:
         id: vuln_cout
         run: |
           report_file="report.json"
-          vuln_count=$(jq '.Results | length' "$report_file")
+          vuln_count=$(jq '.Results[0].Vulnerabilities | length' "$report_file")
           echo "VULN COUNT: $vuln_count"
           if [ $vuln_count == '0' ]; then
             exit 1
