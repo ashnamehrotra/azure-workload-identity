@@ -29,7 +29,7 @@ jobs:
           report_file="report.json"
           vuln_count=$(jq '.Results | length' "$report_file")
           if [ $vuln_count == '0' ]; then
-            exit 0
+            exit 1
           fi
       - name: Copa Action
         id: copa
