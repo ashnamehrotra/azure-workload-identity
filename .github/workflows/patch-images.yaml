@@ -52,6 +52,5 @@ jobs:
       - name: docker manifest create
         run: |
           export DOCKER_CLI_EXPERIMENTAL=enabled
-          docker manifest create docker.io/ashnam/proxy-init:latest --amend docker.io/ashnam/proxy-init:latest-linux-arm64
-          docker manifest create docker.io/ashnam/proxy-init:latest --amend docker.io/ashnam/proxy-init:latest-linux-amd64
+          docker manifest create docker.io/ashnam/proxy-init:latest --amend docker.io/ashnam/proxy-init:latest-linux-arm64 --amend docker.io/ashnam/proxy-init:latest-linux-amd64
           docker manifest push docker.io/ashnam/proxy-init:latest
