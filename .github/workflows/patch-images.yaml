@@ -23,6 +23,15 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os'
           image-ref:  ${{ matrix.images }}
+      - name: Check Vuln Count
+        id: vuln_cout
+        run: |
+          report_file="report.json"
+          vuln_count=$(jq '.Results[0].Vulnerabilities | length' "$report_file")
+          echo "vuln_count=$vuln_count" >> $GITHUB_OUTPUT
+          if [$vuln_count == 0]; then
+            exit 0
+          fi
       - name: Copa Action
         id: copa
         uses: project-copacetic/copa-action@1eb86b0907bce48225b66dc9488c7d329c2d48a0 # v1.0.0
