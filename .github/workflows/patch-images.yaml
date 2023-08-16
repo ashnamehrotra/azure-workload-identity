@@ -26,6 +26,7 @@ jobs:
       - name: Check Vuln Count
         id: vuln_cout
         run: |
+          set +e
           report_file="report.json"
           vuln_count=$(jq '.Results[0].Vulnerabilities | length' "$report_file")
           echo "vuln_count=$vuln_count" >> $GITHUB_OUTPUT
