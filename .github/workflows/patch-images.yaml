@@ -29,6 +29,7 @@ jobs:
           set +e
           report_file="report.json"
           vuln_count=$(jq '.Results[0].Vulnerabilities | length' "$report_file")
+          echo "VULN COUNT: $vuln_count"
           if [ "$vuln_count" -eq 0 ]; then
             echo "exitcode=$?" >> $GITHUB_OUTPUT
           fi
