@@ -29,9 +29,8 @@ jobs:
           set +e
           report_file="report.json"
           vuln_count=$(jq '.Results[0].Vulnerabilities | length' "$report_file")
-          echo "vuln_count=$vuln_count" >> $GITHUB_OUTPUT
           if [ "$vuln_count" -eq 0 ]; then
-            exit 0
+            echo "exitcode=$?" >> $GITHUB_OUTPUT
           fi
       - name: Copa Action
         id: copa
